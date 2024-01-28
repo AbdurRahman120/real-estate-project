@@ -1,0 +1,76 @@
+﻿@model Assignment.Models.user
+
+<link href="~/Content/img/favicon.png" rel="icon">
+<link href="~/Content/img/apple-touch-icon.png" rel="apple-touch-icon" />
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+<link href="~/Content/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="~/Content/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="~/Content/css/style.css" rel="stylesheet">
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="intro-single">
+        <div class="container w-50">
+            <div class="form-horizontal">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-xl-10 col-lg-12 col-md-9">
+                        <div class="card o-hidden border-0 shadow-lg my-5">
+                            <div class="card-body p-5 justify-content-center align-items-center">
+                                <h4>Sign Up</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.confirmPassword, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.confirmPassword, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                        @Html.ValidationMessageFor(model => model.confirmPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <span style="color:greenyellow"><a href="http://localhost:44348/Home/Login">Already have an account?</a></span>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Sign Up" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+}
+<script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/Content/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="~/Content/vendor/php-email-form/validate.js"></script>
+<script src="~/Content/js/main.js"></script>

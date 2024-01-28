@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Assignment.Models.Order>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+          content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Ample Admin Lite Template by WrapPixel</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/dashboard/plugins/images/favicon.png" />
+    <link href="~/Content/dashboard/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/dashboard/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    <link href="~/Content/dashboard/css/style.min.css" rel="stylesheet">
+</head>
+@{
+    Layout = "~/Views/Shared/dashboardView.cshtml";
+}
+
+<body>
+    <div class="container mt-3">
+        <table class="table table-bordered">
+            @if (Model != null && Model.Any())
+            {
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Customer Email</th>
+                        <th>Property Name</th>
+                        <th>Property Details</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => order.CustomerName)</td>
+                            <td>@Html.DisplayFor(modelItem => order.CustomerEmail)</td>
+                            <td>@Html.DisplayFor(modelItem => order.propertyName)</td>
+                            <td>
+                                @if (order.property != null)
+                                {
+                                    @Html.DisplayFor(modelItem => order.property.property_name)
+                                }
+                                else
+                                {
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("DeleteOrder", "Home", new { id = order.Id })" class="btn btn-danger btn-sm text-white" onclick="return confirm('Are you sure you want to delete this property?')">
+                                    Delete
+                                    <span class="bi bi-trash"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    
+                </tbody>
+                }
+            
+            else
+            {
+                <tr>
+                    <td colspan="5">No orders available.</td>
+                </tr>
+            }
+            </table>
+        </div>
+    
+
+
+            </table>
+            <script src="~/Content/dashboard/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+            <script src="~/Content/dashboard/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/Content/dashboard/js/app-style-switcher.js"></script>
+            <script src="~/Content/dashboard/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+            <script src="~/Content/dashboard/js/waves.js"></script>
+            <script src="~/Content/dashboard/js/sidebarmenu.js"></script>
+            <script src="~/Content/dashboard/js/custom.js"></script>
+            <script src="~/Content/dashboard/plugins/bower_components/chartist/dist/chartist.min.js"></script>
+            <script src="~/Content/dashboard/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+            <script src="~/Content/dashboard/js/pages/dashboards/dashboard1.js"></script>

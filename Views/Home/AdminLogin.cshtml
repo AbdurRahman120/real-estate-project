@@ -1,0 +1,57 @@
+﻿@model Assignment.Models.admin
+
+<link href="~/Content/img/favicon.png" rel="icon">
+<link href="~/Content/img/apple-touch-icon.png" rel="apple-touch-icon" />
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+<link href="~/Content/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="~/Content/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="~/Content/css/style.css" rel="stylesheet">
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<section class="intro-single">
+    <div class="container w-50">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-5 justify-content-center align-items-center">
+                        <div class="form-horizontal">
+                            <h4>Admin Login</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.admin_email, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.admin_email, new { htmlAttributes = new { @class = "form-control mt-2",@type = "email",@placeholder = "Enter Your Email" } })
+                                    @Html.ValidationMessageFor(model => model.admin_email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.admin_password, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.admin_password, new { htmlAttributes = new { @class = "form-control  mt-2", @type = "password", @placeholder = "Enter Your Password" } })
+                                    @Html.ValidationMessageFor(model => model.admin_password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Login As Administrator" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+</section>
+}
+<script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/Content/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="~/Content/vendor/php-email-form/validate.js"></script>
+<script src="~/Content/js/main.js"></script>
